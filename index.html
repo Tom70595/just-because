@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Because...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: white; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* ENTRANCE */
+        #entrance { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; display: flex; justify-content: center; align-items: center; z-index: 9999; text-decoration: none; transition: opacity 1s ease, visibility 1s ease; }
+        #entrance:target { opacity: 0; visibility: hidden; }
+        .glow-btn { padding: 20px 50px; font-size: 1.5rem; font-family: 'Playfair Display', serif; background: transparent; color: #ff4d4d; border: 2px solid #ff4d4d; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); transition: all 0.4s ease; animation: pulse 2s infinite; }
+        .glow-btn:hover { background: #ff4d4d; color: white; box-shadow: 0 0 40px rgba(255, 77, 77, 0.8); }
+
+        /* VIDEO */
+        .video-section { position: relative; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .video-container video { width: 100vw; height: 100vh; object-fit: cover; opacity: 0.5; }
+        .video-overlay-text { text-align: center; z-index: 1; }
+        .video-overlay-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; letter-spacing: 2px; text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
+
+        /* LETTER */
+        .letter-section { padding: 100px 20px; display: flex; justify-content: center; background: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 60px 50px; border-radius: 20px; max-width: 800px; line-height: 2; font-weight: 300; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+        .glass-card h2 { font-family: 'Playfair Display', serif; color: #ff6b6b; font-size: 2.5rem; margin-bottom: 30px; text-align: center; }
+
+        /* GALLERY (Adjusted for lots of photos) */
+        .gallery-section { padding: 100px 20px; text-align: center; }
+        .gallery-section h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 50px; }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            perspective: 1000px; 
+        }
+        .photo-wrapper { overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.5s ease; }
+        .photo-wrapper:hover { transform: rotateY(10deg) rotateX(10deg) scale(1.05); }
+        .photo-wrapper img { width: 100%; height: 300px; object-fit: cover; }
+
+        /* SURPRISE */
+        .surprise-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #050505; }
+        .surprise-btn { padding: 15px 40px; font-size: 1.2rem; background: white; color: black; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: transform 0.2s; text-decoration: none; }
+        .surprise-btn:hover { transform: scale(1.1); }
+        #final-gift { opacity: 0; margin-top: 30px; font-size: 2rem; font-family: 'Playfair Display', serif; color: #ff4d4d; text-align: center; transition: opacity 1s ease; }
+        #final-gift:target { opacity: 1; animation: pop 0.8s ease; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+        @media (max-width: 600px) {
+            .video-overlay-text h1 { font-size: 2.5rem; }
+            .glass-card { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" id="entrance">
+        <div class="glow-btn">Open Me ❤️</div>
+    </a>
+
+    <div id="main-content">
+        <section class="video-section">
+            <div class="video-container">
+                <!-- YOUR VIDEO FILE -->
+                <video autoplay loop muted playsinline>
+                    <source src="250818.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-overlay-text">
+                <h1>Just Because...</h1>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="glass-card">
+                <h2>To My Favorite Person,</h2>
+                <p>
+                    I know I don't say this enough, but I was sitting here thinking about everything we've been through, and I just felt like I needed to do something different. 
+                    <br><br>
+                    No special occasion. No holiday. Just an ordinary day where I realized how incredibly lucky I am to have you in my life.
+                    <br><br>
+                    You have this way of making everything better just by being around. Whether we're laughing at something stupid, going on an adventure, or just doing nothing at all—every moment with you is my favorite moment. 
+                    <br><br>
+                    I built this little space on the internet just to remind you how much you mean to me. I hope it makes you smile. 
+                </p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>My Favorite Memories</h2>
+            <div class="gallery-grid">
+                <!-- ALL YOUR PHOTOS -->
+                <div class="photo-wrapper"><img src="14265.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="208686.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="190063.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="61432.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="43341.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="65498.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="77508.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="88902.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="177673.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper"><img src="177153.jpeg" alt="Memory"></div>
+            </div>
+        </section>
+
+        <section class="surprise-section">
+            <a href="#final-gift" class="surprise-btn">One Last Thing... 🎁</a>
+            <div id="final-gift">Check your door. Flowers & Chocolates are on the way. 🌹🍫</div>
+        </section>
+    </div>
+
+</body>
+</html>
