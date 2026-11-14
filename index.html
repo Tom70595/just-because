@@ -4,77 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just Because...</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Montserrat:wght@300;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: white; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* ENTRANCE */
-        #entrance { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; display: flex; justify-content: center; align-items: center; z-index: 9999; text-decoration: none; transition: opacity 1s ease, visibility 1s ease; cursor: pointer; }
-        
+        /* --- ENTRANCE --- */
+        #entrance { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 1.5s ease, visibility 1.5s ease; cursor: pointer; }
         .glow-btn { padding: 20px 50px; font-size: 1.5rem; font-family: 'Playfair Display', serif; background: transparent; color: #ff4d4d; border: 2px solid #ff4d4d; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); transition: all 0.4s ease; animation: pulse 2s infinite; }
         .glow-btn:hover { background: #ff4d4d; color: white; box-shadow: 0 0 40px rgba(255, 77, 77, 0.8); }
+        .tiny-text { margin-top: 20px; font-size: 0.9rem; color: #666; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* VIDEO */
+        /* --- VIDEO --- */
         .video-section { position: relative; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .video-container video { width: 100vw; height: 100vh; object-fit: cover; opacity: 0.5; }
+        .video-container video { width: 100vw; height: 100vh; object-fit: cover; opacity: 0.4; }
         .video-overlay-text { text-align: center; z-index: 1; }
-        .video-overlay-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; letter-spacing: 2px; text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
+        .video-overlay-text h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; letter-spacing: 2px; text-shadow: 0 0 20px rgba(0,0,0,1); margin-bottom: 20px; }
+        .video-overlay-text p { font-size: 1.2rem; font-weight: 300; color: #ddd; }
 
-        /* LETTER */
-        .letter-section { padding: 100px 20px; display: flex; justify-content: center; background: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 60px 50px; border-radius: 20px; max-width: 800px; line-height: 2; font-weight: 300; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-        .glass-card h2 { font-family: 'Playfair Display', serif; color: #ff6b6b; font-size: 2.5rem; margin-bottom: 30px; text-align: center; }
+        /* --- LETTER --- */
+        .letter-section { padding: 120px 20px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 60px 50px; border-radius: 20px; max-width: 800px; line-height: 2; font-weight: 300; box-shadow: 0 30px 60px rgba(0,0,0,0.6); font-size: 1.1rem; }
+        .glass-card h2 { font-family: 'Playfair Display', serif; color: #ff6b6b; font-size: 2.8rem; margin-bottom: 30px; text-align: center; }
+        
+        /* --- GALLERY (Polaroid Style) --- */
+        .gallery-section { padding: 100px 20px 150px 20px; text-align: center; background: #0a0a0a; }
+        .gallery-section h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 60px; color: #fff; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; perspective: 1000px; }
+        
+        .photo-wrapper { background: #fff; padding: 15px 15px 60px 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); transition: transform 0.4s ease, box-shadow 0.4s ease; position: relative; cursor: pointer; }
+        .photo-wrapper::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 80px; height: 30px; background: rgba(255, 255, 255, 0.4); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .photo-wrapper:hover { transform: rotateY(5deg) rotateX(5deg) scale(1.05); box-shadow: 0 25px 50px rgba(255, 77, 77, 0.4); z-index: 10; }
+        .photo-wrapper img { width: 100%; height: 280px; object-fit: cover; border: 1px solid #eee; }
+        .photo-caption { font-family: 'Caveat', cursive; font-size: 1.8rem; color: #333; margin-top: 15px; position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; }
 
-        /* GALLERY (Adjusted for lots of photos) */
-        .gallery-section { padding: 100px 20px; text-align: center; }
-        .gallery-section h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 50px; }
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            perspective: 1000px; 
-        }
-        .photo-wrapper { overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.5s ease; }
-        .photo-wrapper:hover { transform: rotateY(10deg) rotateX(10deg) scale(1.05); }
-        .photo-wrapper img { width: 100%; height: 300px; object-fit: cover; }
-
-        /* SURPRISE */
-        .surprise-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #050505; }
-        .surprise-btn { padding: 15px 40px; font-size: 1.2rem; background: white; color: black; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: transform 0.2s; text-decoration: none; display: inline-block; }
-        .surprise-btn:hover { transform: scale(1.1); }
-        #final-gift { opacity: 0; margin-top: 30px; font-size: 2rem; font-family: 'Playfair Display', serif; color: #ff4d4d; text-align: center; transition: opacity 1s ease; }
+        /* --- SURPRISE --- */
+        .surprise-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #050505; position: relative; }
+        .surprise-btn { padding: 18px 50px; font-size: 1.2rem; background: white; color: black; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: transform 0.2s; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .surprise-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255,255,255,0.5); }
+        #final-gift { opacity: 0; margin-top: 40px; font-size: 2.2rem; font-family: 'Playfair Display', serif; color: #ff4d4d; text-align: center; transition: opacity 1s ease; padding: 0 20px; }
         #final-gift:target { opacity: 1; animation: pop 0.8s ease; }
 
+        /* Animations */
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
+        .heart { position: fixed; bottom: -100px; background-color: #ff4d4d; width: 15px; height: 15px; transform: rotate(-45deg); animation: float 10s infinite ease-in; opacity: 0; z-index: 0; pointer-events: none; }
+        .heart::before, .heart::after { content: ''; position: absolute; width: 15px; height: 15px; background-color: #ff4d4d; border-radius: 50%; }
+        .heart::before { top: -8px; left: 0; }
+        .heart::after { left: 8px; top: 0; }
+        @keyframes float { 0% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 0; } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { transform: translateY(-100vh) rotate(-45deg) scale(1.5); opacity: 0; } }
+
         @media (max-width: 600px) {
-            .video-overlay-text h1 { font-size: 2.5rem; }
+            .video-overlay-text h1 { font-size: 3rem; }
             .glass-card { padding: 40px 20px; }
+            .photo-wrapper img { height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- The button now uses an onclick event -->
     <div id="entrance" onclick="openSite()">
         <div class="glow-btn">Open Me ❤️</div>
+        <div class="tiny-text">Made just for you</div>
     </div>
 
     <div id="main-content">
         <section class="video-section">
             <div class="video-container">
-                <!-- YOUR VIDEO FILE -->
                 <video autoplay loop muted playsinline>
                     <source src="250818.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="video-overlay-text">
                 <h1>Just Because...</h1>
+                <p>Scroll down to see why</p>
             </div>
         </section>
 
@@ -84,11 +90,11 @@
                 <p>
                     I know I don't say this enough, but I was sitting here thinking about everything we've been through, and I just felt like I needed to do something different. 
                     <br><br>
-                    No special occasion. No holiday. Just an ordinary day where I realized how incredibly lucky I am to have you in my life.
+                    No special occasion. No holiday. Just an ordinary day where I realized how incredibly lucky I am to have you in my life. Sometimes we get so caught up in the routine of everyday life that we forget to stop and appreciate the people who make it all worthwhile.
                     <br><br>
-                    You have this way of making everything better just by being around. Whether we're laughing at something stupid, going on an adventure, or just doing nothing at all—every moment with you is my favorite moment. 
+                    You have this way of making everything better just by being around. Whether we're laughing at something stupid, going on an adventure, or just doing nothing at all—every moment with you is my favorite moment. Your smile literally lights up my day, and your laugh is my favorite sound.
                     <br><br>
-                    I built this little space on the internet just to remind you how much you mean to me. I hope it makes you smile. 
+                    I built this little space on the internet just to remind you how much you mean to me. I hope it makes you smile, because seeing you happy is my favorite thing in the world. 
                 </p>
             </div>
         </section>
@@ -96,17 +102,38 @@
         <section class="gallery-section">
             <h2>My Favorite Memories</h2>
             <div class="gallery-grid">
-                <!-- ALL YOUR PHOTOS -->
-                <div class="photo-wrapper"><img src="14265.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="208686.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="190063.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="61432.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="43341.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="65498.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="77508.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="88902.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="177673.jpeg" alt="Memory"></div>
-                <div class="photo-wrapper"><img src="177153.jpeg" alt="Memory"></div>
+                <div class="photo-wrapper">
+                    <img src="208686.jpeg" alt="Memory">
+                    <div class="photo-caption">Always laughing together</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="190063.jpeg" alt="Memory">
+                    <div class="photo-caption">My favorite view</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="61432.jpeg" alt="Memory">
+                    <div class="photo-caption">That one perfect day</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="43341.jpeg" alt="Memory">
+                    <div class="photo-caption">Unforgettable moments</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="77508.jpeg" alt="Memory">
+                    <div class="photo-caption">Just us</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="88902.jpeg" alt="Memory">
+                    <div class="photo-caption">My happy place</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="177673.jpeg" alt="Memory">
+                    <div class="photo-caption">Forever this</div>
+                </div>
+                <div class="photo-wrapper">
+                    <img src="177153.jpeg" alt="Memory">
+                    <div class="photo-caption">The best days</div>
+                </div>
             </div>
         </section>
 
@@ -116,13 +143,24 @@
         </section>
     </div>
 
-    <!-- THE JAVASCRIPT THAT MAKES IT WORK -->
     <script>
         function openSite() {
             var entrance = document.getElementById('entrance');
             entrance.style.opacity = '0';
             entrance.style.visibility = 'hidden';
         }
+
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
     </script>
 </body>
 </html>
